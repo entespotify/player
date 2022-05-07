@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react';
+import Player from './components/Player/Player';
 
 function App() {
+  const [songs, setTracks] = useState([{title:'', artist:'', album:'', albumart:'', track:''}]);
+
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [nextSongIndex, setNextSongIndex] = useState(0);
+
+  useEffect(() => {
+    setNextSongIndex(() => {
+      if (currentSongIndex + 1 > songs.length - 1) {
+        return 0;
+      } else {
+        return currentSongIndex + 1;
+      }
+    });
+  }, [currentSongIndex]);
+
+  useEffect(() => {
+      fetch("https://hacksawrazor.pythonanywhere.com/tracks/")
+        .then(res => res.json())
+          .then(
+            (result) => {
+                console.log(result);
+                setTracks(result);
+            },
+            (error) => {
+              setTracks("Error");
+            }
+          )
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Player 
+        currentSongIndex={currentSongIndex} 
+        setCurrentSongIndex={setCurrentSongIndex} 
+        nextSongIndex={nextSongIndex} 
+        songs={songs}
+      />
     </div>
   );
 }
