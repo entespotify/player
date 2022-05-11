@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "entespotify",
+  "name": "An open-source music webapp built on react",
   "icons": [
     {
       "src": "favicon.ico",
