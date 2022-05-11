@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/reactive/static/css/main.d2759aec.chunk.css",
-    "main.js": "/reactive/static/js/main.3b1e3e8d.chunk.js",
-    "main.js.map": "/reactive/static/js/main.3b1e3e8d.chunk.js.map",
+    "main.css": "/reactive/static/css/main.0f334102.chunk.css",
+    "main.js": "/reactive/static/js/main.794d47c9.chunk.js",
+    "main.js.map": "/reactive/static/js/main.794d47c9.chunk.js.map",
     "runtime-main.js": "/reactive/static/js/runtime-main.dc114b70.js",
     "runtime-main.js.map": "/reactive/static/js/runtime-main.dc114b70.js.map",
     "static/js/2.dc3f4bee.chunk.js": "/reactive/static/js/2.dc3f4bee.chunk.js",
     "static/js/2.dc3f4bee.chunk.js.map": "/reactive/static/js/2.dc3f4bee.chunk.js.map",
     "index.html": "/reactive/index.html",
-    "static/css/main.d2759aec.chunk.css.map": "/reactive/static/css/main.d2759aec.chunk.css.map",
+    "static/css/main.0f334102.chunk.css.map": "/reactive/static/css/main.0f334102.chunk.css.map",
     "static/js/2.dc3f4bee.chunk.js.LICENSE.txt": "/reactive/static/js/2.dc3f4bee.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dc114b70.js",
     "static/js/2.dc3f4bee.chunk.js",
-    "static/css/main.d2759aec.chunk.css",
-    "static/js/main.3b1e3e8d.chunk.js"
+    "static/css/main.0f334102.chunk.css",
+    "static/js/main.794d47c9.chunk.js"
   ]
 }
