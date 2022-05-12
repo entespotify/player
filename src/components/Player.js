@@ -41,7 +41,7 @@ function Player(props) {
     }
 
     return (
-        <div className="c-player">
+        <div className="cmp-player">
             <audio src={props.songs[props.currentSongIndex].track} ref={audioEl}></audio>
             <h4>Playing now</h4>
             <Details song={props.songs[props.currentSongIndex]} />

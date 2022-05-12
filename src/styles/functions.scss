@@ -1,0 +1,11 @@
+//get value from color map
+@function get-color($key: "grey") {
+    $color: map-get($color-palette, $key);
+    @return $color;
+}
+
+//get value from font-weight map
+@function font-weight($key: "regular") {
+    $weight: map-get($font-weights, $key);
+    @return $weight;
+}

@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import Player from './components/Player/Player';
+import Player from './components/Player';
 
 function App() {
   const [songs, setTracks] = useState([{title:'', artist:'', album:'', albumart:'', track:''}]);
@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="app">
       <Player 
         currentSongIndex={currentSongIndex} 
         setCurrentSongIndex={setCurrentSongIndex} 
