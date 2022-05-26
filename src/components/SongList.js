@@ -10,10 +10,17 @@ function SongList(props) {
     }
     return (
         <div className="cmp-song-list">
-            <div> {props.songs.map( song => (
-                <div key={song.title} onClick={() => displaySong(song.title)}>{song.title}</div>
+            <ul className="cmp-song-list-ul"> {props.songs.map( song => (
+                <li className="cmp-song-list-item" key={song.title} onClick={() => displaySong(song.title)}>
+                    <img className='cmp-song-list-img' src={song.albumart}/>
+                    <div className='cmp-song-list-text'>
+                        <span className='cmp-song-list-title'>{song.title}</span>
+                        <br/>
+                        <span className='cmp-song-list-album'>{song.album}</span>
+                    </div>
+                </li>
             ))}
-            </div>
+            </ul>
             <Player 
                 currentSongIndex={currentSongIndex} 
                 setCurrentSongIndex={setCurrentSongIndex} 

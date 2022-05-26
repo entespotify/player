@@ -19,6 +19,9 @@ function App() {
 
   return (
     <div className="app">
+      <div class="cmp-navbar">
+        <a class="cmp-navbar-title" href="https://entespotify.github.io/reactive">entespotify</a>
+      </div>
       <SongList
         songs={songs}  
       />

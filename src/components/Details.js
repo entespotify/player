@@ -3,11 +3,12 @@ import React from 'react'
 function Details(props) {
     return (
         <div className="cmp-player--details">
+            {props.isFullScreen ?   
             <div className="details-img">
-                <img src={props.song.albumart} alt="" />
-            </div>
-            <h3 className="details-title">{props.song.title}</h3>
-            <h4 className="details-artist">{props.song.artist}</h4>
+                    <img src={props.song.albumart} alt="Album Art" />
+                </div>: null }
+            <p className="details-title">{props.song.title}</p>
+            <p className="details-artist">{props.song.artist}</p>
         </div>
     )
 }
