@@ -1,10 +1,13 @@
 import React, {useState, useRef, useEffect} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Controls from './Controls';
 import Details from './Details';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 function Player(props) {
     const audioEl = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isFullScreen, setIsFullScreen] = useState(false);
 
     useEffect(() => {
         if (isPlaying) {
@@ -41,12 +44,12 @@ function Player(props) {
     }
 
     return (
-        <div className="cmp-player">
+        <div className={"cmp-player " + (isFullScreen ? 'cmp-player-full' : 'cmp-player-mini')}>
+            <button className="angle-btn" onClick={()=> setIsFullScreen(!isFullScreen)}>
+                <FontAwesomeIcon icon={isFullScreen ? faAngleDown : faAngleUp} /></button>
             <audio src={props.songs[props.currentSongIndex].track} ref={audioEl}></audio>
-            <h4>Playing now</h4>
-            <Details song={props.songs[props.currentSongIndex]} />
-            <Controls isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} />
-            <p>Next up: <span>{props.songs[props.nextSongIndex].title} by {props.songs[props.nextSongIndex].artist}</span></p>
+            <Details song={props.songs[props.currentSongIndex]} isFullScreen={isFullScreen}/>
+            <Controls isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} isFullScreen={isFullScreen} />
         </div>
     )
 }
