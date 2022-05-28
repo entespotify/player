@@ -1,0 +1,46 @@
+.cmp-song-list {
+    ul {
+        list-style: none;
+        margin: 10px;
+        padding: 0;
+    }
+
+    &-item {
+        padding: 5px 0;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &:hover {
+            background-color: get-color("dark-grey2");
+        }
+    }
+
+    &-img {
+        width: 10%;
+        max-width: 50px;
+    }
+
+    &-text {
+        cursor: pointer;
+    }
+
+    &-title {
+        font-size: 18px;
+        color: get-color("white2");
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+
+    }
+
+    &-album {
+        font-size: 16px;
+        color: get-color("light-grey");
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+        }
+    }
+}
