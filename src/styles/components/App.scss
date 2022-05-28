@@ -1,0 +1,21 @@
+.cmp-navbar {
+    background-color: get-color("darker-grey");
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media(max-width:768px) {
+        height: 7vh;
+    }
+
+    &-title {
+        font-size: 32px;
+        text-decoration: none;
+        color: get-color("white2");
+
+        @media (max-width: 768px) {
+            font-size: 24px;
+        }
+    }
+}

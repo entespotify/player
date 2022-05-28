@@ -1,0 +1,10 @@
+html {
+	font-size: 10px;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: get-color("dark-grey");
+	font-family: $primary-font;
+	margin: 0;
+}
