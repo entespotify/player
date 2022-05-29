@@ -154,6 +154,9 @@
         width: 60px;
         position: absolute;
         top: 20px;
+        @media (max-width: 768px) {
+            top: 15px;
+        }
 
     }
 }
