@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Controls from './Controls';
 import Details from './Details';
@@ -45,10 +45,11 @@ function Player(props) {
 
     return (
         <div className={"cmp-player " + (isFullScreen ? 'cmp-player-full' : 'cmp-player-mini')}>
-            <button className="angle-btn" onClick={()=> setIsFullScreen(!isFullScreen)}>
-                <FontAwesomeIcon icon={isFullScreen ? faAngleDown : faAngleUp} /></button>
+            <button className="angle-btn" onClick={() => setIsFullScreen(!isFullScreen)}>
+                <FontAwesomeIcon icon={isFullScreen ? faAngleDown : faAngleUp} />
+            </button>
             <audio src={props.songs[props.currentSongIndex].track} ref={audioEl}></audio>
-            <Details song={props.songs[props.currentSongIndex]} isFullScreen={isFullScreen}/>
+            <Details song={props.songs[props.currentSongIndex]} isFullScreen={isFullScreen} />
             <Controls isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} isFullScreen={isFullScreen} />
         </div>
     )

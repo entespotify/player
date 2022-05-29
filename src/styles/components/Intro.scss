@@ -1,0 +1,12 @@
+.cmp-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    span {
+        span {
+            background-color: get-color('violet');
+        }
+    }
+}
