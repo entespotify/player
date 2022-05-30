@@ -2,7 +2,7 @@ import React from 'react'
 
 function Details(props) {
     return (
-        <div className="cmp-player--details">
+        <div className="cmp-player--details" onClick={() => props.setIsFullScreen(true)}>
             {props.isFullScreen ?   
             <div className="details-img">
                     <img src={props.song.albumart} alt="Album Art" />

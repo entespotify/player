@@ -55,19 +55,21 @@
         }
     }
 
-    .angle-btn {
+    .cmp-angle-btn {
         background: none;
         border: none;
         outline: none;
         cursor: pointer;
         color: get-color("grey");
         font-size: 18px;
+        width: 60px;
     }
 }
 
 .cmp-player-mini {
     display: inline-flex;
-    height: 10vh;
+    height: 8vh;
+    min-height: 50px;
     transition: height ease 0.2s;
 
     @media(max-width:768px) {
@@ -77,14 +79,18 @@
     .cmp-player {
         &--details {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 0 20px;
             width: 75vw;
+            cursor: default;
 
             .details {
 
                 &-title {
                     font-size: 18px;
-                    padding: 0 15px;
+                    margin: 0;
 
                     @media (max-width: 768px) {
                         font-size: 16px;
@@ -93,6 +99,7 @@
 
                 &-artist {
                     font-size: 16px;
+                    margin: 0;
 
                     @media (max-width: 768px) {
                         font-size: 14px;
@@ -109,7 +116,7 @@
 }
 
 .cmp-player-full {
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -128,6 +135,10 @@
                         margin: 50px auto;
                         width: 80vw;
                         max-width: 360px;
+
+                        @media (max-width: 768px) {
+                            margin-bottom: 30px;
+                        }
                     }
                 }
 
@@ -148,15 +159,5 @@
                 margin: 0 30px;
             }
         }
-    }
-
-    .angle-btn {
-        width: 60px;
-        position: absolute;
-        top: 20px;
-        @media (max-width: 768px) {
-            top: 15px;
-        }
-
     }
 }
