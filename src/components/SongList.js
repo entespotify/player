@@ -5,7 +5,6 @@ function SongList(props) {
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     let displaySong = (title) => {
         let index = props.songs.findIndex(i => i.title === title)
-        console.log("Song clicked " + index);
         setCurrentSongIndex(index);
     }
     return (
