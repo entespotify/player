@@ -1,6 +1,8 @@
 .cmp-player {
     width: 100%;
     background-color: get-color("darker-grey");
+    position: fixed;
+    bottom: 0;
 
     &--details {
         .details {
@@ -65,9 +67,8 @@
 
 .cmp-player-mini {
     display: inline-flex;
-    position: fixed;
-    bottom: 0;
     height: 10vh;
+    transition: height ease 0.2s;
 
     @media(max-width:768px) {
         height: 6vh;
@@ -108,12 +109,11 @@
 }
 
 .cmp-player-full {
-    height: 100%;
-    position: absolute;
-    top: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    transition: height ease 0.3s;
 
     .cmp-player {
         &--details {
