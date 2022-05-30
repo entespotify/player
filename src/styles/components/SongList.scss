@@ -1,8 +1,11 @@
 .cmp-song-list {
     ul {
         list-style: none;
-        margin: 10px;
+        margin: 9vh 10px;
         padding: 0;
+        @media (max-width: 768px) {
+            margin: 7vh 10px;
+        }
     }
 
     &-item {
