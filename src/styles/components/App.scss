@@ -1,9 +1,13 @@
 .cmp-navbar {
     background-color: get-color("darker-grey");
     height: 8vh;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
 
     @media(max-width:768px) {
         height: 7vh;

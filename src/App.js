@@ -22,8 +22,8 @@ function App() {
 
 	return (
 		<div className="app">
-			<div class="cmp-navbar">
-				<a class="cmp-navbar-title" href="https://entespotify.github.io/reactive">entespotify</a>
+			<div className="cmp-navbar">
+				<a className="cmp-navbar-title" href="https://entespotify.github.io/reactive">entespotify</a>
 			</div>
 			{isLoading ?
 				<Intro />
