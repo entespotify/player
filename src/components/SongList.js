@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Player from './Player';
+import AudioPlayer from './AudioPlayer';
 
 function SongList(props) {
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    let displaySong = (title) => {
+
+    const displaySong = (title) => {
         let index = props.songs.findIndex(i => i.title === title)
         setCurrentSongIndex(index);
     }
+
     return (
         <div className="cmp-song-list">
             <ul className="cmp-song-list-ul"> {props.songs.map(song => (
@@ -20,10 +23,15 @@ function SongList(props) {
                 </li>
             ))}
             </ul>
-            <Player
+            {/* <Player
                 currentSongIndex={currentSongIndex}
                 setCurrentSongIndex={setCurrentSongIndex}
                 songs={props.songs}
+            /> */}
+            <AudioPlayer
+            currentSongIndex={currentSongIndex}
+            setCurrentSongIndex={setCurrentSongIndex}
+            songs={props.songs}
             />
         </div>
     )
