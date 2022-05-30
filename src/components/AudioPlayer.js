@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faForwardStep, faBackwardStep } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faForwardStep, faBackwardStep, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 function AudioPlayer(props) {
   // state
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   // references
   const audioPlayer = useRef();   // reference our audio component
@@ -55,35 +56,67 @@ function AudioPlayer(props) {
     setCurrentTime(progressBar.current.value);
   }
 
-  const backThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value - 30);
-    changeRange();
-  }
+  const SkipSong = (forwards = true) => {
+    if (forwards) {
+        props.setCurrentSongIndex(() => {
+            let temp = props.currentSongIndex;
+            temp++;
 
-  const forwardThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value + 30);
-    changeRange();
-  }
+            if (temp > props.songs.length - 1) {
+                temp = 0;
+            }
+
+            return temp;
+        });
+    } else {
+        props.setCurrentSongIndex(() => {
+            let temp = props.currentSongIndex;
+            temp--;
+
+            if (temp < 0) {
+                temp = props.songs.length - 1;
+            }
+
+            return temp;
+        });
+    }
+}
 
   return (
-    <div className="audioPlayer">
-      <audio ref={audioPlayer} src={props.songs[props.currentSongIndex].track} preload="metadata"></audio>
-      <button className="forwardBackward" onClick={backThirty}><FontAwesomeIcon icon={faBackwardStep} /></button>
-      <button onClick={togglePlayPause} className="playPause">
-        {isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
-      </button>
-      <button className="forwardBackward" onClick={forwardThirty}><FontAwesomeIcon icon={faForwardStep} /></button>
+    <div className={"cmp-player " + (isFullScreen ? 'cmp-player-full' : 'cmp-player-mini')}>
+        <button className="angle-btn" onClick={() => setIsFullScreen(!isFullScreen)}>
+            <FontAwesomeIcon icon={ faAngleDown } />
+        </button>
+        <audio ref={audioPlayer} src={props.songs[props.currentSongIndex].track} preload="metadata"></audio>
+        <div className="cmp-player--details">
+            {isFullScreen ?   
+			<div className="details-img">
+				<img src={props.songs[props.currentSongIndex].albumart} alt="Album Art" />
+			</div>: null }
+			<p className="details-title">{props.songs[props.currentSongIndex].title}</p>
+			<p className="details-artist">{props.songs[props.currentSongIndex].artist}</p>
+        </div>
 
-      {/* current time */}
-      <div className="currentTime">{calculateTime(currentTime)}</div>
+		<div className='cmp-player--progress-bar'>
+			{/* current time */}
+			<div className="cmp-progress-bar-current-time">{calculateTime(currentTime)}</div>
 
-      {/* progress bar */}
-      <div>
-        <input type="range" className="progressBar" defaultValue="0" ref={progressBar} onChange={changeRange} />
-      </div>
+			{/* progress bar */}
+			<div>
+				<input type="range" className="cmp-progress-bar-bar progressBar" defaultValue="0" ref={progressBar} onChange={changeRange} />
+			</div>
 
-      {/* duration */}
-      <div className="duration">{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+			{/* duration */}
+			<div className="cmp-progress-bar-duration">{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+		</div>
+        
+		<div className="cmp-player--controls">
+			<button className="skip-btn" onClick={() => SkipSong(false)}><FontAwesomeIcon icon={faBackwardStep} /></button>
+			<button onClick={togglePlayPause} className="play-btn">
+				{isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
+			</button>
+			<button className="skip-btn" onClick={() => SkipSong()}><FontAwesomeIcon icon={faForwardStep} /></button>
+      	</div>
     </div>
   )
 }

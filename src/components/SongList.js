@@ -24,16 +24,16 @@ function SongList(props) {
                 </li>
             ))}
             </ul>
-            <Player
+            {/* <Player
                 currentSongIndex={currentSongIndex}
                 setCurrentSongIndex={setCurrentSongIndex}
                 songs={props.songs}
-            />
-            {/* <AudioPlayer
+            /> */}
+            <AudioPlayer
             currentSongIndex={currentSongIndex}
             setCurrentSongIndex={setCurrentSongIndex}
             songs={props.songs}
-            /> */}
+            />
         </div>
     )
 }
