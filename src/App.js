@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SongList from './components/SongList';
 import Intro from './components/Intro';
+import TopNavigation from './components/TopNavigation';
 
 function App() {
 	const [songs, setTracks] = useState([{ title: '', artist: '', album: '', albumart: '', track: '' }]);
@@ -22,9 +23,7 @@ function App() {
 
 	return (
 		<div className="app">
-			<div className="cmp-navbar">
-				<a className="cmp-navbar-title" href="https://entespotify.github.io/reactive">entespotify</a>
-			</div>
+			<TopNavigation/>
 			{isLoading ?
 				<Intro />
 				:

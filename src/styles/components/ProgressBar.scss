@@ -1,48 +1,48 @@
 
-  .progressBar {
-    --bar-bg: #ffe3d4;
-    --seek-before-width: 0;
-    --seek-before-color: #ffc2a1;
+  .progress-bar {
+    // --bar-bg: #ffe3d4;
+    --bar-bg: #353236;
+    --seek-before-color: #b738c3;
     --knobby: #3452a5;
     --selectedKnobby: #26c9c3;
+    --seek-before-width: 0;
   
     appearance: none;
     background: var(--bar-bg);;
     border-radius: 10px;
     position: relative;
-    width: 100%;
-    height: 11px;
+    height: 5px;
     outline: none;
   }
   
   /* progress bar - safari */
-  .progressBar::-webkit-slider-runnable-track {
-    background: var(--bar-bg);;
+  .progress-bar::-webkit-slider-runnable-track {
+    // background: var(--bar-bg);;
     border-radius: 10px;
     position: relative;
-    width: 100%;
-    height: 11px;
+    // width: 100%;
+    height: 5px;
     outline: none;
   }
   
   /* progress bar - firefox */
-  .progressBar::-moz-range-track {
-    background: var(--bar-bg);;
+  .progress-bar::-moz-range-track {
+    // background: var(--bar-bg);;
     border-radius: 10px;
     position: relative;
-    width: 100%;
-    height: 11px;
+    // width: 100%;
+    height: 5px;
     outline: none;
   }
   
-  .progressBar::-moz-focus-outer {
+  .progress-bar::-moz-focus-outer {
     border: 0;
   }
   
   /* progress bar - chrome and safari */
-  .progressBar::before {
+  .progress-bar::before {
     content: '';
-    height: 11px;
+    height: 5px;
     width: var(--seek-before-width);
     background-color: var(--seek-before-color);
     border-top-left-radius: 10px;
@@ -55,21 +55,22 @@
   }
   
   /* progress bar - firefox */
-  .progressBar::-moz-range-progress {
+  .progress-bar::-moz-range-progress {
     background-color: var(--seek-before-color);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    height: 11px;
+    height: 5px;
   }
   
   /* knobby - chrome and safari */
-  .progressBar::-webkit-slider-thumb {
+  .progress-bar::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 15px;
     width: 15px;
     border-radius: 50%;
     border: none;
-    background-color: var(--knobby);
+    // background-color: var(--knobby);
+    background-color: transparent;
     cursor: pointer;
     position: relative;
     margin: -2px 0 0 0;
@@ -78,13 +79,13 @@
   }
   
   /* knobby while dragging - chrome and safari */
-  .progressBar:active::-webkit-slider-thumb {
-    transform: scale(1.2);
-    background: var(--selectedKnobby);
-  }
+  // .progress-bar:active::-webkit-slider-thumb {
+  //   transform: scale(1.2);
+  //   background: var(--selectedKnobby);
+  // }
   
   /* knobby - firefox */
-  .progressBar::-moz-range-thumb {
+  .progress-bar::-moz-range-thumb {
     height: 15px;
     width: 15px;
     border-radius: 50%;
@@ -97,7 +98,37 @@
   }
   
   /* knobby while dragging - firefox */
-  .progressBar:active::-moz-range-thumb {
-    transform: scale(1.2);
-    background: var(--selectedKnobby);
+  // .progress-bar:active::-moz-range-thumb {
+  //   transform: scale(1.2);
+  //   background: var(--selectedKnobby);
+  // }
+
+  .cmp-player--progress-bar {
+    
+    .cmp-progress-bar{
+      &-container {
+        display: flex;
+        justify-content: center;
+
+      }
+
+      &-timer {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10vw;
+      }
+
+      &-text {
+        color: #fff;
+        font-size: 12px;
+      }
+
+      &-bar {
+        width: 80vw;
+      }
+    }
+
+    &.cmp-progress-bar-hide {
+      display: none;
+    }
   }

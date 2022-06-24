@@ -10,8 +10,8 @@ function AudioPlayer(props) {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   // references
-  const audioPlayer = useRef();   // reference our audio component
-  const progressBar = useRef();   // reference our progress bar
+  const audioPlayer = useRef();   // reference audio component
+  const progressBar = useRef();   // reference progress bar
   const animationRef = useRef();  // reference the animation
 
   useEffect(() => {
@@ -84,11 +84,12 @@ function AudioPlayer(props) {
 
   return (
     <div className={"cmp-player " + (isFullScreen ? 'cmp-player-full' : 'cmp-player-mini')}>
-        <button className="angle-btn" onClick={() => setIsFullScreen(!isFullScreen)}>
-            <FontAwesomeIcon icon={ faAngleDown } />
-        </button>
+        {isFullScreen ?
+		<button className="cmp-angle-btn" onClick={() => setIsFullScreen(false)}>
+			<FontAwesomeIcon icon={faAngleDown} />
+		</button> : null}
         <audio ref={audioPlayer} src={props.songs[props.currentSongIndex].track} preload="metadata"></audio>
-        <div className="cmp-player--details">
+        <div className="cmp-player--details" onClick={() => setIsFullScreen(true)}>
             {isFullScreen ?   
 			<div className="details-img">
 				<img src={props.songs[props.currentSongIndex].albumart} alt="Album Art" />
@@ -97,25 +98,29 @@ function AudioPlayer(props) {
 			<p className="details-artist">{props.songs[props.currentSongIndex].artist}</p>
         </div>
 
-		<div className='cmp-player--progress-bar'>
-			{/* current time */}
-			<div className="cmp-progress-bar-current-time">{calculateTime(currentTime)}</div>
-
+		<div className={'cmp-player--progress-bar '+ (isFullScreen ? 'cmp-progress-bar-show' : 'cmp-progress-bar-hide')}>
 			{/* progress bar */}
-			<div>
-				<input type="range" className="cmp-progress-bar-bar progressBar" defaultValue="0" ref={progressBar} onChange={changeRange} />
+			<div className='cmp-progress-bar-container'>
+				<input type="range" className="cmp-progress-bar-bar progress-bar" defaultValue="0" ref={progressBar} onChange={changeRange} />
 			</div>
-
-			{/* duration */}
-			<div className="cmp-progress-bar-duration">{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+      <div className='cmp-progress-bar-timer'>
+        {/* current time */}
+        <div className="cmp-progress-bar-current-time cmp-progress-bar-text">{calculateTime(currentTime)}</div>
+        {/* duration */}
+        <div className="cmp-progress-bar-duration cmp-progress-bar-text">{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+      </div>
 		</div>
         
 		<div className="cmp-player--controls">
-			<button className="skip-btn" onClick={() => SkipSong(false)}><FontAwesomeIcon icon={faBackwardStep} /></button>
+			{isFullScreen ?
+				<button className="skip-btn" onClick={() => SkipSong(false)}><FontAwesomeIcon icon={faBackwardStep} /></button>
+			: null}
 			<button onClick={togglePlayPause} className="play-btn">
 				{isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
 			</button>
-			<button className="skip-btn" onClick={() => SkipSong()}><FontAwesomeIcon icon={faForwardStep} /></button>
+			{isFullScreen ?
+				<button className="skip-btn" onClick={() => SkipSong()}><FontAwesomeIcon icon={faForwardStep} /></button>
+			: null}
       	</div>
     </div>
   )
